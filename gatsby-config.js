@@ -5,8 +5,21 @@ module.exports = {
     author: '@gatsbyjs',
   },
   plugins: [
-    `gatsby-plugin-netlify-cms`,
+    `gatsby-transformer-remark`,
+    {
+      resolve: `gatsby-plugin-netlify-cms`,
+      options: {
+        modulePath: `${__dirname}/src/cms/extension.js`,
+      },
+    },
     'gatsby-plugin-react-helmet',
+    {
+     resolve: `gatsby-source-filesystem`,
+     options: {
+       name: `markdown`,
+       path: `${__dirname}/src/documentation`,
+     },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
